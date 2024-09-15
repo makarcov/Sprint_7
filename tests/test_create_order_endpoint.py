@@ -1,4 +1,5 @@
 import pytest
+import allure
 
 from data import CreateOrderData
 from scooter_api import ScooterApi
@@ -6,6 +7,8 @@ from scooter_api import ScooterApi
 
 class TestCreateOrder:
 
+    @allure.title('Тестируем создание заказа при разных вариантах цвета самоката')
+    @allure.description('Запрос должен вернуть трэк номер заказа и код 201')
     @pytest.mark.parametrize('colour', [["BLACK"], ["GREY"], ["BLACK", "GREY"], []])
     def test_create_order_success(self, colour):
         body = CreateOrderData.body.copy()
